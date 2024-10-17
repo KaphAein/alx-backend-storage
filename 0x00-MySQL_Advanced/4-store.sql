@@ -1,10 +1,13 @@
--- Adding trigger
+-- Adding trigger to decrease quantity after inserting into orders
 DELIMITER //
-CREATE TRIGGER IF NOT EXISTS quantity_decrease
-AFTER INSERT ON order
+DROP TRIGGER IF EXISTS quantity_decrease;
+CREATE TRIGGER quantity_decrease
+AFTER INSERT ON orders
 FOR EACH ROW
+BEGIN
     UPDATE items
-        SET quatntity = quantity - NEW.number
-        WHERE name = NEW.item_name;
-//
+    SET quantity = quantity - NEW.number
+    WHERE name = NEW.item_name;
+END //
+
 DELIMITER ;
