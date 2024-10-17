@@ -1,5 +1,5 @@
 -- creates a table metal fans
-SELECT band_name, (INFULL(split, '2022') - formed) AS lifespan
+SELECT band_name, (IFNULL(split, '2022') - formed) AS lifespan
     FROM  metal_bands
     WHERE style = 'Glam rock'
     ORDER BY lifespan DESC;
