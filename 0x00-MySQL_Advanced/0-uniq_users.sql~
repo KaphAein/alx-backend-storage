@@ -1,0 +1,2 @@
+-- creates a table users
+CREATE TABLE users IF NOT EXIST (
